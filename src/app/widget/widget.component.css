@@ -1,0 +1,3 @@
+:host {
+  @apply bg-white rounded shadow-lg flex flex-col relative h-96;
+}

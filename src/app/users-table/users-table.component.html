@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th [style.width.ch]="2">ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Company</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="data.length">
+    <tr *ngFor="let d of data">
+      <td>{{ d.id }}</td>
+      <td>{{ d.name }}</td>
+      <td>{{ d.email }}</td>
+      <td>{{ d.company.name }}</td>
+      <td>{{ d.phone }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="data.length === 0">
+    <tr>
+      <td colspan="5">No users found</td>
+    </tr>
+  </tbody>
+</table>

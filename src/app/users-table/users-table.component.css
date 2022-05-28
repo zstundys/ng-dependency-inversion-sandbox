@@ -1,0 +1,5 @@
+:host {
+  @apply block -my-3 -mx-5;
+
+  --columns: 5;
+}

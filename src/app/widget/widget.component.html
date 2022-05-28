@@ -1,0 +1,33 @@
+<header class="flex items-center pl-5 h-12">
+  <div class="flex-1">
+    <ng-content select="app-widget-title"></ng-content>
+  </div>
+  <button
+    *ngIf="content"
+    (click)="onRefreshClick()"
+    type="button"
+    class="p-3 rounded-full text-slate-500 fill-current hover:text-slate-600 active:text-slate-700"
+    title="Refresh"
+  >
+    <ng-icon name="feather-refresh-cw"></ng-icon>
+  </button>
+</header>
+<main class="py-3 px-5 overflow-auto flex-grow flex-shrink basis-0">
+  <ng-content></ng-content>
+</main>
+<footer
+  *ngIf="updatedAt"
+  class="py-3 px-5 text-xs bg-slate-50 text-black text-opacity-70 hover:text-opacity-100 rounded-b"
+>
+  Updated: {{ updatedAt | formatDistanceToNow }}
+</footer>
+
+<output
+  class="absolute inset-0 bg-white bg-opacity-90 grid justify-center items-center transition-all duration-300 rounded"
+  [class.invisible]="!loading"
+  [class.opacity-0]="!loading"
+  [class.opacity-100]="loading"
+>
+  <ng-icon name="feather-loader" class="motion-safe:animate-spin"></ng-icon>
+  <span *ngIf="loading" class="sr-only">Loading</span>
+</output>
