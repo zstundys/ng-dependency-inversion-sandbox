@@ -38,10 +38,10 @@ export class WidgetComponent implements OnInit, AfterViewInit {
   }
 
   onRefreshClick() {
-    this.loadContent();
+    this.loadContent(true);
   }
 
-  private loadContent() {
+  private loadContent(update: boolean = false) {
     if (!this.content) {
       return;
     }
@@ -59,7 +59,9 @@ export class WidgetComponent implements OnInit, AfterViewInit {
       )
       .subscribe({
         next: () => {
-          this.updatedAt = new Date();
+          if (update) {
+            this.updatedAt = new Date();
+          }
         },
       });
   }

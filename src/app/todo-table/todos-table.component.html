@@ -8,7 +8,7 @@
   </thead>
   <tbody *ngIf="data.length">
     <tr
-      *ngFor="let d of data"
+      *ngFor="let d of data; trackBy: byId"
       [class.line-through]="d.completed"
       [class.text-gray-400]="d.completed"
     >
