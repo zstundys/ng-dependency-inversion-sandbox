@@ -8,8 +8,8 @@ import {
   TrackByFunction,
 } from '@angular/core';
 import { delay, Observable, tap } from 'rxjs';
-import { ILoadable, LOADABLE } from '../models/loadable.interface';
-import { ITodo } from '../models/todo.interface';
+import { ILoadable, LOADABLE } from '../../models/loadable.interface';
+import { ITodo } from '../../models/todo.interface';
 
 @Component({
   selector: 'app-todos-table',

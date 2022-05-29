@@ -7,8 +7,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { delay, Observable, tap } from 'rxjs';
-import { ILoadable, LOADABLE } from '../models/loadable.interface';
-import { IUser } from '../models/user.interface';
+import { ILoadable, LOADABLE } from '../../models/loadable.interface';
+import { IUser } from '../../models/user.interface';
 
 @Component({
   selector: 'app-users-table',
