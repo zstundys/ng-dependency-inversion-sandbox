@@ -9,7 +9,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { finalize } from 'rxjs';
+import { finalize, take } from 'rxjs';
 import { ILoadable, LOADABLE } from '../models/loadable.interface';
 import { IconsModule } from '../shared/icons.module';
 import { PipesModule } from '../shared/pipes/pipes.module';
@@ -63,6 +63,7 @@ export class WidgetComponent implements OnInit, AfterViewInit {
     this.content
       .load()
       .pipe(
+        take(1),
         finalize(() => {
           this.loading = false;
           this.cd.markForCheck();
@@ -74,6 +75,8 @@ export class WidgetComponent implements OnInit, AfterViewInit {
           if (update) {
             this.updatedAt = new Date();
           }
+
+          this.cd.markForCheck();
         },
       });
   }

@@ -1,4 +1,4 @@
-<header class="flex items-center pl-5 h-12 bg-slate-50 rounded-t">
+<header class="flex items-center pl-5 h-12 bg-slate-600 text-white rounded-t">
   <div class="flex-1">
     <ng-content select="app-widget-title"></ng-content>
   </div>
@@ -6,7 +6,7 @@
     *ngIf="content"
     (click)="onRefreshClick()"
     type="button"
-    class="p-3 rounded-full text-slate-500 fill-current hover:text-slate-600 active:text-slate-700"
+    class="p-3 rounded-full fill-current opacity-70 hover:rotate-45 active:rotate-180 hover:opacity-90 active:opacity-100 transition-transform"
     title="Refresh"
   >
     <ng-icon name="feather-refresh-cw"></ng-icon>
@@ -23,11 +23,14 @@
 </footer>
 
 <output
-  class="absolute inset-0 bg-white bg-opacity-90 grid justify-center items-center transition-all duration-300 rounded"
+  class="absolute -inset-px bg-white bg-opacity-60 backdrop-blur-sm grid justify-center items-center transition-all duration-300 rounded"
   [class.invisible]="!loading"
   [class.opacity-0]="!loading"
   [class.opacity-100]="loading"
 >
-  <ng-icon name="feather-loader" class="motion-safe:animate-spin"></ng-icon>
+  <ng-icon
+    name="feather-loader"
+    class="motion-safe:animate-spin text-indigo-600 text-4xl"
+  ></ng-icon>
   <span *ngIf="loading" class="sr-only">Loading</span>
 </output>

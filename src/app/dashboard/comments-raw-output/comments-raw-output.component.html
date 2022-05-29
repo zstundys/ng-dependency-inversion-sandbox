@@ -1,0 +1,17 @@
+<ul class="flex flex-col gap-4">
+  <li *ngFor="let d of data">
+    <p class="flex">
+      <span class="font-bold mr-auto">{{ d.name | titlecase }}</span>
+      <a
+        target="_blank"
+        class="text-slate-900 text-opacity-40 hover:text-opacity-100 hover:underline"
+        href="mailto:{{ d.email | lowercase }}"
+        >{{ d.email | lowercase }}</a
+      >
+    </p>
+
+    <p class="line-clamp-2" style="hyphens: auto">
+      {{ d.body }}
+    </p>
+  </li>
+</ul>
