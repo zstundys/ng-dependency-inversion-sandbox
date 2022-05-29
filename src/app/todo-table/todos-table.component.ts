@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -7,15 +8,25 @@ import {
   TrackByFunction,
 } from '@angular/core';
 import { delay, Observable, tap } from 'rxjs';
-import { ILoadable, LOADABLE } from '../loadable.interface';
+import { ILoadable, LOADABLE } from '../models/loadable.interface';
 import { ITodo } from '../models/todo.interface';
 
 @Component({
   selector: 'app-todos-table',
   templateUrl: './todos-table.component.html',
-  styleUrls: ['./todos-table.component.css'],
+  styles: [
+    `
+      :host {
+        @apply block -my-3 -mx-5;
+
+        --columns: 3;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: LOADABLE, useExisting: TodosTableComponent }],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class TodosTableComponent implements OnInit, ILoadable {
   data: ITodo[] = [];

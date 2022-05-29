@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -9,14 +10,25 @@ import {
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { finalize } from 'rxjs';
-import { ILoadable, LOADABLE } from '../loadable.interface';
+import { ILoadable, LOADABLE } from '../models/loadable.interface';
+import { IconsModule } from '../shared/icons.module';
+import { PipesModule } from '../shared/pipes/pipes.module';
+import { WidgetTitleComponent } from './widget-title.component';
 
 @UntilDestroy()
 @Component({
   selector: 'app-widget',
   templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.css'],
+  styles: [
+    `
+      :host {
+        @apply bg-white rounded shadow-lg flex flex-col relative h-96 overflow-hidden;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, WidgetTitleComponent, IconsModule, PipesModule],
 })
 export class WidgetComponent implements OnInit, AfterViewInit {
   @HostBinding('[attr.role]') role = 'article';

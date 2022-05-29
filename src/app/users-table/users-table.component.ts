@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -6,15 +7,25 @@ import {
   OnInit,
 } from '@angular/core';
 import { delay, Observable, tap } from 'rxjs';
-import { ILoadable, LOADABLE } from '../loadable.interface';
+import { ILoadable, LOADABLE } from '../models/loadable.interface';
 import { IUser } from '../models/user.interface';
 
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
-  styleUrls: ['./users-table.component.css'],
+  styles: [
+    `
+      :host {
+        @apply block -my-3 -mx-5;
+
+        --columns: 5;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: LOADABLE, useExisting: UsersTableComponent }],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class UsersTableComponent implements OnInit, ILoadable {
   data: IUser[] = [];

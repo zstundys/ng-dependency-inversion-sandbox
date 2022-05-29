@@ -5,7 +5,11 @@ import { formatDistanceToNow } from 'date-fns';
   name: 'formatDistanceToNow',
 })
 export class FormatDistanceToNowPipe implements PipeTransform {
-  transform(value: Date, addSuffix = true): unknown {
+  transform(value: Date | undefined, addSuffix = true): unknown {
+    if (!value) {
+      return value;
+    }
+
     return formatDistanceToNow(value, { addSuffix });
   }
 }

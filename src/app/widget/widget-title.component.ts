@@ -8,8 +8,15 @@ import {
 @Component({
   selector: 'app-widget-title',
   templateUrl: './widget-title.component.html',
-  styleUrls: ['./widget-title.component.css'],
+  styles: [
+    `
+      :host {
+        @apply font-semibold;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class WidgetTitleComponent implements OnInit {
   @HostBinding('[attr.role]') role = 'heading';
